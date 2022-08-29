@@ -1,0 +1,7 @@
+legacymodels/*
+processed_data/*
+model/data.pickle
+__pycache__/
+*.py[cod]
+.idea
+chess_robot/src/vision/points.pickle

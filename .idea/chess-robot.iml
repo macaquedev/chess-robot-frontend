@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/legacymodels/lightmodel" />
+      <excludeFolder url="file://$MODULE_DIR$/legacymodels/model" />
+      <excludeFolder url="file://$MODULE_DIR$/legacymodels/newmodel" />
+      <excludeFolder url="file://$MODULE_DIR$/legacymodels/newnewmodel" />
+      <excludeFolder url="file://$MODULE_DIR$/legacymodels/oldcamwithoutlight" />
+      <excludeFolder url="file://$MODULE_DIR$/processed_data/black" />
+      <excludeFolder url="file://$MODULE_DIR$/processed_data/empty" />
+      <excludeFolder url="file://$MODULE_DIR$/processed_data/white" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.8 (chess-robot)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
