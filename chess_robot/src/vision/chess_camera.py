@@ -15,7 +15,7 @@ class ChessCamera:
                 self.points, self.rotation_degree = pickle.load(f)
                 self.points = np.array(self.points)
         except Exception as _:
-            print("Please calibrbate the camera before starting it")
+            print("Please calibrate the camera before starting it")
             self.cap.stop()
             exit(-1)
 
