@@ -26,7 +26,7 @@ def calibrate_camera():
             red_foreground_mask_2 = cv2.inRange(hsv, np.array([0, 125, 125]), np.array([10, 255, 255]))
             red_foreground_mask = cv2.add(red_foreground_mask_1, red_foreground_mask_2)
 
-            green_foreground_mask = cv2.inRange(hsv, np.array([50, 143, 100]), np.array([120, 255, 255]))
+            green_foreground_mask = cv2.inRange(hsv, np.array([80, 143, 100]), np.array([120, 255, 255]))
 
             red_contours, _ = cv2.findContours(red_foreground_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             green_contours, _ = cv2.findContours(green_foreground_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -83,9 +83,9 @@ def calibrate_camera():
                 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "src", "vision",
                                        "points.pickle"), "wb") as f:
                     pickle.dump([inner_points, rotation_degree], f)
-                break
+                return
             elif k == ord('q'):
-                break
+                return
 
         except (ValueError, IndexError):
             try:
@@ -94,15 +94,15 @@ def calibrate_camera():
                     with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "src", "vision",
                                            "points.pickle"), "wb") as f:
                         pickle.dump([inner_points, rotation_degree], f)
-                    break
+                    return
                 elif k == ord('q'):
-                    break
-            except NameError:
-                pass
+                    return
+            except NameError as _:
+                return
 
-    cam.stop()
-    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
     calibrate_camera()
+    cam.stop()
+    cv2.destroyAllWindows()
