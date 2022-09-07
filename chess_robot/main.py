@@ -30,7 +30,6 @@ if __name__ == "__main__":
 
                 print(x := transcribe_outcome(outcome))
                 arduino.send_data_and_wait_for_acknowledgement(f"__.{x}")
-                arduino.wait_for_acknowledgement()
             elif data.startswith("LICHESS"):
                 arduino.send_data_and_wait_for_acknowledgement(f".Connecting to Lichess\nPlease start a game\non your PC")
                 with LichessGame(HumanPlayer(), LichessOpponent()).attach_arduino(arduino).attach_camera(camera) as g:
