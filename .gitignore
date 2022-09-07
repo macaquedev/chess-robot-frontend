@@ -1,6 +1,6 @@
 legacymodels/*
 processed_data/*
-model/data.pickle
+model/*
 __pycache__/
 *.py[cod]
 .idea
