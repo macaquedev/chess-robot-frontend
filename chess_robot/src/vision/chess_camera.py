@@ -33,7 +33,7 @@ class ChessCamera:
 
     @staticmethod
     def draw_lines(f):
-        frame = f[:]
+        frame = f.copy()
         for i in range(1, 8):
             mx_pt = int((i / 8.0) * 400)
             cv2.line(frame, (0, mx_pt), (400, mx_pt), (0, 0, 255))
