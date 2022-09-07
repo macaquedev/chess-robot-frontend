@@ -20,7 +20,7 @@ class Player:
         while True:
             while not self.arduino.received_acknowledgement():
                 frame = self.camera.read()
-                cv2.imshow('F', frame)
+                cv2.imshow('F', self.camera.draw_lines(frame))
                 cv2.waitKey(1)
             predicted_position, output_image = self.classifier.predict(frame)
             cv2.imshow('P', output_image)

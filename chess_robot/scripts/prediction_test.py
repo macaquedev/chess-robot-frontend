@@ -12,8 +12,7 @@ if __name__ == "__main__":
         while True:
             frame = cam.read() #  cv2.imread("/home/alex/Python/chess-robot/data2/1/0/1661364750.jpg") #cam.read()
             prediction, output_image = c.predict(frame)
-            print(prediction)
-            cv2.imshow("F", frame)
+            cv2.imshow("F", cam.draw_lines(frame))
             cv2.imshow("P", output_image)
 
             while True:

@@ -36,7 +36,7 @@ class HumanPlayer(Player):
         fen = self.board.fen().split()[0]
         position = fen_to_position(fen)
         frame = self.camera.read()
-        cv2.imshow('F', frame)
+        cv2.imshow('F', self.camera.draw_lines(frame))
         cv2.waitKey(1)
 
         predicted_position, output_image = self.classifier.predict(frame)
@@ -48,7 +48,7 @@ class HumanPlayer(Player):
                 self.arduino.send_data("_.Please reset board \nto the correct position.")
                 while not self.arduino.received_acknowledgement():
                     frame = self.camera.read()
-                    cv2.imshow('F', frame)
+                    cv2.imshow('F', self.camera.draw_lines(frame))
                     cv2.waitKey(1)
                 predicted_position, output_image = self.classifier.predict(frame)
                 cv2.imshow('P', output_image)
@@ -65,7 +65,7 @@ class HumanPlayer(Player):
         while True:
             while not self.arduino.received_acknowledgement():
                 frame = self.camera.read()
-                cv2.imshow('F', frame)
+                cv2.imshow('F', self.camera.draw_lines(frame))
                 cv2.waitKey(1)
 
             prediction, output_image = self.classifier.predict(frame)
@@ -85,7 +85,7 @@ class HumanPlayer(Player):
                 while True:
                     while not self.arduino.received_acknowledgement():
                         frame = self.camera.read()
-                        cv2.imshow('F', frame)
+                        cv2.imshow('F', self.camera.draw_lines(frame))
                         cv2.waitKey(1)
 
                     prediction, output_image = self.classifier.predict(frame)
@@ -103,7 +103,7 @@ class HumanPlayer(Player):
                 while True:
                     while not self.arduino.received_acknowledgement():
                         frame = self.camera.read()
-                        cv2.imshow('F', frame)
+                        cv2.imshow('F', self.camera.draw_lines(frame))
                         cv2.waitKey(1)
 
                     prediction, output_image = self.classifier.predict(frame)
