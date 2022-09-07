@@ -1,9 +1,5 @@
-import contextlib
-import io
 import pickle
 import random
-import statistics
-import cvzone
 import cv2
 import os
 
@@ -160,7 +156,6 @@ def get_move_from_prediction(board, prediction, current_position):
 
 class ChessPieceClassifier:
     def __init__(self):
-        #  self.classifiers = [cvzone.Classifier(i, labels_path) for i in model_paths]
         try:
             with open(config.MODEL_PATH, "rb") as f:
                 self.model = pickle.load(f)
@@ -215,15 +210,8 @@ class ChessPieceClassifier:
                 roi = cv2.addWeighted(roi, config.CONTRAST_FACTOR, roi, 0, config.BRIGHTNESS_FACTOR)
                 roi = roi // 4 * 4 + 4 // 2
                 img[i:i + 50, j:j + 50, :] = roi
-                # uncomment above lines to see change in original image
                 p = self.model.predict(self.pca.transform(np.array([roi.flatten()])))
                 prediction[m][n] = p[0]
-
-                # with contextlib.redirect_stdout(io.StringIO()):  # Silencing stdout since getPrediction is noisy
-                #     p = [i.getPrediction(roi)[1] for i in self.classifiers]
-                # prediction[m][n] = statistics.mode(p)
-                # if len(set(p)) != 1:
-                #     print(m, n, p)
 
         output_image = self.chessboard.copy()
         for m, i in enumerate(range(0, output_image.shape[0], 50)):
