@@ -3,6 +3,7 @@ from chess_robot.config import config
 from chess_robot.src.communication.arduino import Arduino
 from chess_robot.src.players.human_player import HumanPlayer
 from chess_robot.src.players.stockfish_player import StockfishPlayer
+from chess_robot.src.players.oscar_ai_player import OscarAIPlayer
 from chess_robot.src.players.lichess_opponent import LichessOpponent
 from chess_robot.src.players.lichess_game import LichessGame
 from chess_robot.src.players.game import Game, transcribe_outcome
@@ -25,6 +26,17 @@ if __name__ == "__main__":
                     players = [HumanPlayer(), StockfishPlayer(int(data[0]))]
                 else:
                     players = [StockfishPlayer(int(data[0])), HumanPlayer()]
+                with Game(*players).attach_arduino(arduino).attach_camera(camera) as g:
+                    outcome = g.play()
+
+                print(x := transcribe_outcome(outcome))
+                arduino.send_data_and_wait_for_acknowledgement(f"__.{x}")
+            elif data.startswith("OSCAR "):
+                data = data[6:].split()
+                if data[0] == "1":
+                    players = [HumanPlayer(), OscarAIPlayer()]
+                else:
+                    players = [OscarAIPlayer(), HumanPlayer()]
                 with Game(*players).attach_arduino(arduino).attach_camera(camera) as g:
                     outcome = g.play()
 
