@@ -222,18 +222,19 @@ class King:
         if 0 <= xi - 1 <= 7:
             if turn != board[yi][xi - 1][-1]:
                 moves.append([yi, xi - 1])
-        if board[yi][xi][1] == '0' and [yi, xi] == [0, 4]:  # castling king side for white
-            if board[yi][xi + 3][1] == '0' and board[yi][xi + 2][0] == ' ' and board[yi][xi + 1][0] == ' ':
-                moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, 1, 2)
-        if board[yi][xi][1] == '0' and [yi, xi] == [0, 4]:  # castling queen side for white
-            if board[yi][xi - 4][1] == '0' and board[yi][xi - 2][0] == ' ' and board[yi][xi - 1][0] == ' ':
-                moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, -1, -2)
-        if board[yi][xi][1] == '0' and [yi, xi] == [7, 4]:  # castling king side for black
-            if board[yi][xi + 3][1] == '0' and board[yi][xi + 2][0] == ' ' and board[yi][xi + 1][0] == ' ':
-                moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, 1, 2)
-        if board[yi][xi][1] == '0' and [yi, xi] == [7, 4]:  # castling queen side for black
-            if board[yi][xi - 4][1] == '0' and board[yi][xi - 2][0] == ' ' and board[yi][xi - 1][0] == ' ':
-                moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, -1, -2)
+        if in_check != turn:
+            if board[yi][xi][1] == '0' and [yi, xi] == [0, 4]:  # castling king side for white
+                if board[yi][xi + 3][1] == '0' and board[yi][xi + 2][0] == ' ' and board[yi][xi + 1][0] == ' ':
+                    moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, 1, 2)
+            if board[yi][xi][1] == '0' and [yi, xi] == [0, 4]:  # castling queen side for white
+                if board[yi][xi - 4][1] == '0' and board[yi][xi - 2][0] == ' ' and board[yi][xi - 1][0] == ' ':
+                    moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, -1, -2)
+            if board[yi][xi][1] == '0' and [yi, xi] == [7, 4]:  # castling king side for black
+                if board[yi][xi + 3][1] == '0' and board[yi][xi + 2][0] == ' ' and board[yi][xi + 1][0] == ' ':
+                    moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, 1, 2)
+            if board[yi][xi][1] == '0' and [yi, xi] == [7, 4]:  # castling queen side for black
+                if board[yi][xi - 4][1] == '0' and board[yi][xi - 2][0] == ' ' and board[yi][xi - 1][0] == ' ':
+                    moves = king_two_squares_check(xi, yi, board, turn, in_check, moves, -1, -2)
         # check if the king is moving into check
         global recursion1
         if recursion1 < 1:  # prevent infinite recursion
