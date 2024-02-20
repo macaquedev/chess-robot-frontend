@@ -26,7 +26,7 @@ def calibrate_camera():
             red_foreground_mask_2 = cv2.inRange(hsv, np.array([0, 125, 125]), np.array([10, 255, 255]))
             red_foreground_mask = cv2.add(red_foreground_mask_1, red_foreground_mask_2)
 
-            green_foreground_mask = cv2.inRange(hsv, np.array([80, 143, 100]), np.array([120, 255, 255]))
+            green_foreground_mask = cv2.inRange(hsv, np.array([60, 100, 140]), np.array([120, 255, 255]))
 
             red_contours, _ = cv2.findContours(red_foreground_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             green_contours, _ = cv2.findContours(green_foreground_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
