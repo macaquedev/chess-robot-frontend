@@ -20,4 +20,4 @@ class LichessGame(Game):
 
     def play(self):
         self.white.arduino.send_data_and_wait_for_acknowledgement("1" if self.game["color"] == "white" else "0")
-        super().play()
+        return super().play()
