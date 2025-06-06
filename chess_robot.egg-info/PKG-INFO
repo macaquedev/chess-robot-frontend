@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: chess-robot
+Version: 0.0.1
+Summary: Python package powering my chess playing robot.
+Home-page: https://github.com/macaquedev/chess-robot
+Author: Alex Pylypenko
+Author-email: macaquedev@gmail.com
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Programming Language :: Python :: 3.8
